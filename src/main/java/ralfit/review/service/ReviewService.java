@@ -21,8 +21,16 @@ public class ReviewService {
         return reviewRepository.getAllReviews();
     }
 
+    public List<ReviewDto> getReviewsById(String id) throws SQLException {
+        return reviewRepository.getAllReviewsById(id);
+    }
+
     public void addReview(ReviewDto reviewDto) throws SQLException {
         reviewRepository.saveReview(reviewDto);
+    }
+
+    public void updateReview(ReviewDto reviewDto) throws SQLException {
+        reviewRepository.updateReview(reviewDto);
     }
 
 }

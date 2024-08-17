@@ -20,6 +20,11 @@ public class ReviewController {
     private ReviewService reviewService;
 
 
+    @GetMapping("/detalle")
+    public List<ReviewDto> getReviewById(@RequestParam String id) throws SQLException {
+        return reviewService.getReviewsById(id);
+    }
+
     @GetMapping
     public List<ReviewDto> getAllReviews() throws SQLException {
         return reviewService.getAllReviews();
@@ -28,6 +33,12 @@ public class ReviewController {
     @PostMapping
     public ResponseEntity saveReview(@RequestBody ReviewDto review ) throws SQLException {
         reviewService.addReview(review);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity updateReview(@RequestBody ReviewDto review ) throws SQLException {
+        reviewService.updateReview(review);
         return ResponseEntity.ok().build();
     }
 
